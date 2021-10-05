@@ -1,0 +1,11 @@
+#!/bin/bash
+#SBATCH --job-name=lp_eval_normal
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=1
+#SBATCH --gres=gpu:1
+#SBATCH --mem=32GB
+#SBATCH --time=24:00:00
+#SBATCH --partition=default_gpu
+
+cd $HOME/automl-for-low-precision-training; 
+python evaluate_lp.py --model_dir saved_models/lp_resnet18+cifar10_epo10_bs32_lr0.001_mom0.9_wd0.0005 

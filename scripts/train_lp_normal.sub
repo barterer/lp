@@ -1,0 +1,11 @@
+#!/bin/bash
+#SBATCH --job-name=low_precision
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=1
+#SBATCH --gres=gpu:2080ti:1
+#SBATCH --mem=32GB
+#SBATCH --time=128:00:00
+#SBATCH --partition=default_gpu
+
+cd $HOME/automl-for-low-precision-training; 
+python train_lp.py --arch resnet18 --data cifar10  --epo 10 --bs 32 --lr 0.001 
